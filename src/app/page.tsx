@@ -5,8 +5,8 @@ import { useChat } from "ai/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Dropdown from "@/components/Dropdown";
-import Link from "next/link";
-import GithubIcon from "@/icons/GithubIcon";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const muscleGroups = [
   "chest",
@@ -51,25 +51,9 @@ const Home = () => {
 
   return (
     <>
-      <header className="px-4 sm:px-0 flex items-center max-w-[36rem] mx-auto h-[4rem] border-b justify-between">
-        <div className="inline-block">
-          <Link href="/">
-            <h1 className="text-2xl font-bold">Gymbro AI</h1>
-          </Link>
-        </div>
+      <Header />
 
-        <div>
-          <a
-            href="https://github.com/imadatyatalah/gymbro-ai"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <GithubIcon />
-          </a>
-        </div>
-      </header>
-
-      <main className="px-4 sm:px-0 flex min-h-[calc(100vh-4rem)] max-w-[36rem] mx-auto py-8 justify-center">
+      <main className="px-4 sm:px-0 flex min-h-[calc(100vh-4rem-6.25rem)] max-w-[36rem] mx-auto py-8 justify-center">
         <section className="space-y-10">
           <div className="text-center space-y-3">
             <h2 className="text-5xl font-extrabold">
@@ -136,6 +120,8 @@ const Home = () => {
           ) : null}
         </section>
       </main>
+
+      <Footer />
     </>
   );
 };
