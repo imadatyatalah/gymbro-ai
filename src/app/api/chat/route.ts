@@ -2,6 +2,7 @@
 
 import { Configuration, OpenAIApi } from "openai-edge";
 import { OpenAIStream, StreamingTextResponse } from "ai";
+import { NextResponse } from "next/server";
 
 // Create an OpenAI API client (that's edge friendly!)
 const config = new Configuration({
@@ -14,6 +15,10 @@ export const runtime = "edge";
 
 export const POST = async (req: Request) => {
   const { muscleGroup, numberOfExercises, timeInMinutes } = await req.json();
+
+  if (!muscleGroup || !numberOfExercises || !timeInMinutes) {
+    return NextResponse.json("Missing required info", { status: 400 });
+  }
 
   // Ask OpenAI for a streaming completion given the prompt
   const response = await openai.createChatCompletion({

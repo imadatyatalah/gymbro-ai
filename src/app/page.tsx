@@ -1,21 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useChat } from "ai/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Dropdown from "@/components/Dropdown";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import GymWorkoutsGeneratedCount from "./gym-workouts-generated-count";
 
-const muscleGroups = [
-  "chest",
-  "back",
-  "shoulders",
-  "arms",
-  "legs",
-  "full body",
-] as const;
+const muscleGroups = ["chest", "back", "shoulders", "arms", "legs"] as const;
 type TMuscleGroup = (typeof muscleGroups)[number];
 
 const numberOfExercises = ["1", "2", "3", "4", "5", "6"] as const;
@@ -42,9 +36,6 @@ const Home = () => {
       },
     });
 
-  // TODO: Update this count
-  const gymWorkoutsGeneratedCount = 1494;
-
   const lastMessage = messages[messages.length - 1];
   const generatedWorkout =
     lastMessage?.role === "assistant" ? lastMessage.content : null;
@@ -60,9 +51,9 @@ const Home = () => {
               Generate your next gym workout using chatGPT
             </h2>
 
-            <p className="font-medium text-gray-500">
-              {gymWorkoutsGeneratedCount} gym workouts generated so far...
-            </p>
+            <Suspense fallback={<div>Loading...</div>}>
+              <GymWorkoutsGeneratedCount />
+            </Suspense>
           </div>
 
           <form className="space-y-3" onSubmit={handleSubmit}>
