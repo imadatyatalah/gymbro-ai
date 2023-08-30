@@ -5,6 +5,8 @@ import { useChat } from "ai/react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Dropdown from "@/components/Dropdown";
+import Link from "next/link";
+import GithubIcon from "@/icons/GithubIcon";
 
 const muscleGroups = [
   "chest",
@@ -48,73 +50,93 @@ const Home = () => {
     lastMessage?.role === "assistant" ? lastMessage.content : null;
 
   return (
-    <main className="flex items-center justify-center">
-      <section className="w-[36rem] space-y-10">
-        <div className="text-center space-y-3">
-          <h1 className="text-5xl font-extrabold">
-            Generate your next gym workout using chatGPT
-          </h1>
-
-          <p className="font-medium text-gray-500">
-            {gymWorkoutsGeneratedCount} gym workouts generated so far...
-          </p>
+    <>
+      <header className="px-4 sm:px-0 flex items-center max-w-[36rem] mx-auto h-[4rem] border-b justify-between">
+        <div className="inline-block">
+          <Link href="/">
+            <h1 className="text-2xl font-bold">Gymbro AI</h1>
+          </Link>
         </div>
 
-        <form className="space-y-3" onSubmit={handleSubmit}>
-          <fieldset>
-            <input
-              value={input}
-              onChange={handleInputChange}
-              placeholder="Type anything to start..."
-              className="rounded-full w-full border border-black focus:ring-0 focus:border-black"
-              required
-            />
-          </fieldset>
+        <div>
+          <a
+            href="https://github.com/imadatyatalah/gymbro-ai"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GithubIcon />
+          </a>
+        </div>
+      </header>
 
-          <div className="flex space-x-2">
-            <Dropdown
-              items={muscleGroups}
-              selectedItem={selectedMuscleGroup}
-              setSelectedItem={setSelectedMuscleGroup as () => void}
-              label="Muscle group"
-            />
+      <main className="px-4 sm:px-0 flex min-h-[calc(100vh-4rem)] max-w-[36rem] mx-auto py-8 justify-center">
+        <section className="space-y-10">
+          <div className="text-center space-y-3">
+            <h2 className="text-5xl font-extrabold">
+              Generate your next gym workout using chatGPT
+            </h2>
 
-            <Dropdown
-              items={numberOfExercises}
-              selectedItem={selectedNumberOfExercises}
-              setSelectedItem={setSelectedNumberOfExercises as () => void}
-              label="Number of exercises"
-            />
-
-            <Dropdown
-              items={timeInMinutes}
-              selectedItem={selectedTimeInMinutes}
-              setSelectedItem={setSelectedTimeInMinutes as () => void}
-              label="Time in minutes"
-            />
+            <p className="font-medium text-gray-500">
+              {gymWorkoutsGeneratedCount} gym workouts generated so far...
+            </p>
           </div>
 
-          <button
-            disabled={isLoading}
-            className="bg-black rounded-full text-white font-medium px-4 py-2 border-black border hover:bg-opacity-80 w-full transition-all duration-200"
-            type="submit"
-          >
-            {isLoading
-              ? "Hold on gymbro, We're generating your next workout..."
-              : "Generate your next gym workout"}
-          </button>
-        </form>
+          <form className="space-y-3" onSubmit={handleSubmit}>
+            <fieldset>
+              <input
+                value={input}
+                onChange={handleInputChange}
+                placeholder="Type anything to start..."
+                className="rounded-full w-full border border-black focus:ring-0 focus:border-black"
+                required
+              />
+            </fieldset>
 
-        {generatedWorkout ? (
-          <ReactMarkdown
-            className="prose break-words"
-            remarkPlugins={[remarkGfm]}
-          >
-            {generatedWorkout}
-          </ReactMarkdown>
-        ) : null}
-      </section>
-    </main>
+            <div className="flex space-x-2">
+              <Dropdown
+                items={muscleGroups}
+                selectedItem={selectedMuscleGroup}
+                setSelectedItem={setSelectedMuscleGroup as () => void}
+                label="Muscle group"
+              />
+
+              <Dropdown
+                items={numberOfExercises}
+                selectedItem={selectedNumberOfExercises}
+                setSelectedItem={setSelectedNumberOfExercises as () => void}
+                label="Number of exercises"
+              />
+
+              <Dropdown
+                items={timeInMinutes}
+                selectedItem={selectedTimeInMinutes}
+                setSelectedItem={setSelectedTimeInMinutes as () => void}
+                label="Time in minutes"
+              />
+            </div>
+
+            <button
+              disabled={isLoading}
+              className="bg-black rounded-full text-white font-medium px-4 py-2 border-black border hover:bg-opacity-80 w-full transition-all duration-200"
+              type="submit"
+            >
+              {isLoading
+                ? "Hold on gymbro, We're generating your next workout..."
+                : "Generate your next gym workout"}
+            </button>
+          </form>
+
+          {generatedWorkout ? (
+            <ReactMarkdown
+              className="prose break-words"
+              remarkPlugins={[remarkGfm]}
+            >
+              {generatedWorkout}
+            </ReactMarkdown>
+          ) : null}
+        </section>
+      </main>
+    </>
   );
 };
 

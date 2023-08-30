@@ -29,26 +29,17 @@ Muscle Group: ${muscleGroup}
 Workout Time: ${timeInMinutes} minutes
 Number of Exercises: ${numberOfExercises}
 
-Please provide a workout that includes only exercises focusing on the specified muscle group. For each exercise, include only the following details:
+Please provide a workout that includes exercises focusing on the specified muscle group. Each exercise should have 3 instructions only & have the following format exactly:
 
-1. "Exercise name", difficulty [Specify a difficulty rating on a scale of 1 to 10] (should be 4 instructions maximum)
+1. "Exercise name", difficulty [Specify a difficulty rating on a scale of 1 to 10].
 - [Provide step-by-step instructions for performing the exercise]
 - [Provide step-by-step instructions for performing the exercise]
 - [Provide step-by-step instructions for performing the exercise]
-- [Provide step-by-step instructions for performing the exercise]
+
+also add a random advice at the end of the workout.
+
+note: don't generate anything but the exercises and the advice.
         `,
-
-        // content: `
-        // Generate a ${muscleGroup} workout that contains ${numberOfExercises} exercises and is ${timeInMinutes} minutes long.
-
-        // The response should look like this:
-
-        // 1. "Exercise name", difficulty 5/10
-        // - This is how the exercise should be done
-        // - This is how the exercise should be done
-        // - This is how the exercise should be done
-        // - This is how the exercise should be done
-        // `,
       },
     ],
   });
@@ -58,6 +49,3 @@ Please provide a workout that includes only exercises focusing on the specified 
   // Respond with the stream
   return new StreamingTextResponse(stream);
 };
-
-// Make sure each generated workout is less than 1000 characters.
-// Make sure to generate only the exercise names and nothing else. Each exercise should have a list of 4 sentences describing how the exercise should be done.
