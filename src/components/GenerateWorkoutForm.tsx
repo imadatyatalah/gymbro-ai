@@ -24,14 +24,15 @@ const GenerateWorkoutForm = () => {
   const [selectedTimeInMinutes, setSelectedTimeInMinutes] =
     useState<TTimeInMinutes>(timeInMinutes[1]);
 
-  const { input, handleInputChange, handleSubmit, isLoading, messages } =
-    useChat({
-      body: {
-        muscleGroup: selectedMuscleGroup,
-        numberOfExercises: selectedNumberOfExercises,
-        timeInMinutes: selectedTimeInMinutes,
-      },
-    });
+  const { handleSubmit, isLoading, messages, setInput } = useChat({
+    body: {
+      muscleGroup: selectedMuscleGroup,
+      numberOfExercises: selectedNumberOfExercises,
+      timeInMinutes: selectedTimeInMinutes,
+    },
+    // the form can't submit if `input` is empty, so we set it to a space
+    initialInput: " ",
+  });
 
   const lastMessage = messages[messages.length - 1];
   const generatedWorkout =
@@ -40,16 +41,6 @@ const GenerateWorkoutForm = () => {
   return (
     <>
       <form className="space-y-3" onSubmit={handleSubmit}>
-        <fieldset>
-          <input
-            value={input}
-            onChange={handleInputChange}
-            placeholder="Type anything to start..."
-            className="rounded-full w-full border border-black focus:ring-0 focus:border-black"
-            required
-          />
-        </fieldset>
-
         <div className="flex space-x-2">
           <Dropdown
             items={muscleGroups}
@@ -75,6 +66,8 @@ const GenerateWorkoutForm = () => {
 
         <button
           disabled={isLoading}
+          // the form can't submit if `input` is empty, so we set it to a space
+          onClick={() => setInput(" ")}
           className="bg-black rounded-full text-white font-medium px-4 py-2 border-black border hover:bg-opacity-80 w-full transition-all duration-200"
           type="submit"
         >
