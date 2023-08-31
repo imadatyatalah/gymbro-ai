@@ -49,7 +49,7 @@ Please provide a workout that includes exercises focusing on the specified muscl
 - [Provide step-by-step instructions for performing the exercise]
 - [Provide step-by-step instructions for performing the exercise]
 
-also add a random advice at the end of the workout.
+Also add a random advice.
 
 note: don't generate anything but the exercises and the advice.
         `,

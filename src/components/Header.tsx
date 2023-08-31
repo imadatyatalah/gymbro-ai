@@ -15,8 +15,12 @@ const Header = () => {
           href="https://github.com/imadatyatalah/gymbro-ai"
           target="_blank"
           rel="noopener noreferrer"
+          className="flex items-center text-sm font-medium border rounded-full px-2 py-1 shadow hover:bg-gray-100 transition-all duration-200"
         >
-          <GithubIcon />
+          <span className="mr-1">
+            <GithubIcon />
+          </span>
+          Star on GitHub
         </a>
       </div>
     </header>
