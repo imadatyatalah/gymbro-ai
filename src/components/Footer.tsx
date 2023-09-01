@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="mx-auto flex h-[4rem] max-w-[36rem] items-center justify-between border-t border-white px-4 text-sm sm:px-0 sm:text-base">
+    <footer className="mx-auto flex h-[4rem] max-w-[36rem] items-center justify-between border-t border-white px-4 text-sm sm:px-0">
       <div className="w-full text-center">
         <p className="font-medium">
           Proudly built in Morocco 🇲🇦 by{" "}

@@ -79,7 +79,7 @@ const GenerateWorkoutForm = () => {
 
       {generatedWorkout ? (
         <ReactMarkdown
-          className="prose break-words"
+          className="prose break-words text-sm sm:text-base"
           remarkPlugins={[remarkGfm]}
         >
           {generatedWorkout}

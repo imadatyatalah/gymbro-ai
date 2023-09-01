@@ -29,7 +29,7 @@ const Dropdown = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute mt-1 w-full overflow-auto rounded-2xl border border-black bg-white text-base shadow focus:outline-none">
+            <Listbox.Options className="absolute z-10 mt-1 w-full overflow-auto rounded-2xl border border-black bg-white text-base shadow focus:outline-none">
               {items.map((item, index) => (
                 <Listbox.Option
                   key={index}

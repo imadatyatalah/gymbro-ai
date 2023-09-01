@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: rgb(243, 232, 255);
-  background: linear-gradient(
-    34deg,
-    rgba(243, 232, 255, 1) 0%,
-    rgba(255, 228, 230, 1) 100%
-  );
+@layer base {
+  body {
+    @apply text-sm sm:text-base;
+
+    background: rgb(243, 232, 255);
+    background: linear-gradient(
+      34deg,
+      rgba(243, 232, 255, 1) 0%,
+      rgba(255, 228, 230, 1) 100%
+    );
+  }
 }
