@@ -17,7 +17,7 @@ type TTimeInMinutes = (typeof timeInMinutes)[number];
 
 const GenerateWorkoutForm = () => {
   const [selectedMuscleGroup, setSelectedMuscleGroup] = useState<TMuscleGroup>(
-    muscleGroups[0]
+    muscleGroups[0],
   );
   const [selectedNumberOfExercises, setSelectedNumberOfExercises] =
     useState<TNumberOfExercises>(numberOfExercises[3]);
@@ -41,7 +41,7 @@ const GenerateWorkoutForm = () => {
   return (
     <>
       <form className="space-y-3" onSubmit={handleSubmit}>
-        <div className="flex space-x-2">
+        <div className="flex flex-col sm:flex-row sm:space-x-2">
           <Dropdown
             items={muscleGroups}
             selectedItem={selectedMuscleGroup}
@@ -68,7 +68,7 @@ const GenerateWorkoutForm = () => {
           disabled={isLoading}
           // the form can't submit if `input` is empty, so we set it to a space
           onClick={() => setInput(" ")}
-          className="bg-black rounded-full text-white font-medium px-4 py-2 border-black border hover:bg-opacity-80 w-full transition-all duration-200"
+          className="w-full rounded-full border border-black bg-black px-4 py-2 font-medium text-white transition-all duration-200 hover:bg-opacity-80"
           type="submit"
         >
           {isLoading

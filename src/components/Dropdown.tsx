@@ -19,7 +19,7 @@ const Dropdown = ({
 
       <Listbox value={selectedItem} onChange={setSelectedItem}>
         <div className="relative">
-          <Listbox.Button className="relative capitalize w-full cursor-pointer rounded-full text-base px-4 py-2 text-left border border-black font-medium focus:outline-none">
+          <Listbox.Button className="relative w-full cursor-pointer rounded-full border border-black bg-white px-4 py-2 text-left text-base font-medium capitalize focus:outline-none">
             <span className="block truncate text-sm">{selectedItem}</span>
           </Listbox.Button>
 
@@ -29,12 +29,12 @@ const Dropdown = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute shadow mt-1 w-full overflow-auto rounded-2xl bg-white text-base border border-black focus:outline-none">
+            <Listbox.Options className="absolute mt-1 w-full overflow-auto rounded-2xl border border-black bg-white text-base shadow focus:outline-none">
               {items.map((item, index) => (
                 <Listbox.Option
                   key={index}
                   className={({ active }) =>
-                    `relative cursor-default text-sm select-none py-2 px-4 ${
+                    `relative cursor-default select-none px-4 py-2 text-sm ${
                       active ? "bg-gray-100" : "text-gray-900"
                     }`
                   }
@@ -53,7 +53,7 @@ const Dropdown = ({
                       {selected ? (
                         <span className="absolute inset-y-0 right-0 flex items-center pr-4">
                           <CheckboxCircleFill
-                            className="w-5 h-5"
+                            className="h-5 w-5"
                             aria-hidden="true"
                           />
                         </span>

@@ -18,7 +18,7 @@ export const ratelimit = new Ratelimit({
 
 export const nanoid = customAlphabet(
   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-  7
+  7,
 ); // 7-character random string
 
 export async function setRandomKey(): Promise<{ key: string }> {
@@ -29,7 +29,7 @@ export async function setRandomKey(): Promise<{ key: string }> {
     { output: null },
     {
       nx: true,
-    }
+    },
   );
   if (response !== "OK") {
     // by the off chance that key already exists

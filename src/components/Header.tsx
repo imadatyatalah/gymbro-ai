@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="px-4 sm:px-0 flex items-center max-w-[36rem] mx-auto h-[4rem] border-b justify-between">
+    <header className="mx-auto flex h-[4rem] max-w-[36rem] items-center justify-between border-b border-white px-4 sm:px-0">
       <div className="inline-block">
         <Link href="/">
           <h1 className="text-2xl font-bold">Gymbro AI</h1>
@@ -15,7 +15,7 @@ const Header = () => {
           href="https://github.com/imadatyatalah/gymbro-ai"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center text-sm font-medium border rounded-full px-2 py-1 shadow hover:bg-gray-100 transition-all duration-200"
+          className="flex items-center rounded-full border bg-white px-2 py-1 text-sm font-medium shadow transition-all duration-200 hover:bg-gray-100"
         >
           <span className="mr-1">
             <GithubIcon />

@@ -15,10 +15,10 @@ const Home = async () => {
     <>
       <Header />
 
-      <main className="px-4 sm:px-0 flex min-h-[calc(100vh-4rem-6.25rem)] max-w-[36rem] mx-auto py-8 justify-center">
+      <main className="mx-auto flex min-h-[calc(100vh-8rem)] max-w-[36rem] justify-center px-4 py-8 sm:px-0">
         <section className="space-y-10">
-          <div className="text-center space-y-3">
-            <h2 className="text-5xl font-extrabold">
+          <div className="space-y-3 text-center">
+            <h2 className="text-4xl font-extrabold sm:text-5xl">
               Generate your next gym workout using chatGPT
             </h2>
 
